@@ -1,122 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List App</title>
+  <head>
+    <title>Stunning Todo List</title>
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
 
-        h1 {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: 2px;
-        }
+      h1 {
+        background-color: #3498db;
+        color: white;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+      }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-        li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-            padding: 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+      ul li {
+        background: #fff;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        li a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-            margin-right: 10px;
-            font-size: 18px;
-        }
+      ul li a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-        .delete-btn {
-            color: #e74c3c;
-            font-size: 20px;
-        }
+      ul li .delete-btn,
+      ul li .edit-btn {
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 10px; /* Space between buttons and text */
+      }
 
-        .edit-btn {
-            color: #f39c12;
-            font-size: 20px;
-        }
+      ul li .delete-btn {
+        color: #e74c3c;
+      }
 
-        form {
-            background: #fff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+      ul li .edit-btn {
+        color: #2980b9;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+      form {
+        background: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            font-size: 16px;
-        }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 3px;
-            font-size: 16px;
-            transition: background-color 0.2s ease;
-        }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+      input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #2980b9;
+      }
     </style>
-</head>
-<body>
-    <h1>My Awesome Todo List</h1>
+  </head>
+
+  <body>
+    <h1> Todo List - Tocs Project</h1>
     <ul>
-        <!-- Sample todo items (replace with dynamic data from your backend) -->
-        <li>
-            <a href="#" class="delete-btn">✘</a>
-            <a href="#" class="edit-btn">✎</a>
-            <span>Buy groceries</span>
-        </li>
-        <li>
-            <a href="#" class="delete-btn">✘</a>
-            <a href="#" class="edit-btn">✎</a>
-            <span>Finish project report</span>
-        </li>
-        <!-- Add more list items here -->
+      <% todolist.forEach(function(todo, index) { %>
+      <li>
+        <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
+        <a href="/todo/<%= index %>" class="edit-btn">✎</a>
+        <%- todo %>
+      </li>
+      <% }); %>
     </ul>
 
     <form action="/todo/add/" method="post">
-        <label for="newtodo">What should I do?</label>
-        <input type="text" name="newtodo" id="newtodo" autofocus required>
-        <input type="submit" value="Add">
+      <label for="newtodo">Add a new task:</label>
+      <input type="text" name="newtodo" id="newtodo" autofocus />
+      <input type="submit" value="Add" />
     </form>
-</body>
+  </body>
 </html>
