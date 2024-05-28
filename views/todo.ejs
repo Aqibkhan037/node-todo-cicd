@@ -1,147 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Todo List APP</title>
+  <head>
+    <title>Stunning Todo List</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
 
-        .container {
-            width: 90%;
-            max-width: 600px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+      h1 {
+        background-color: #3498db;
+        color: white;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+      }
 
-        h1 {
-            background-color: #4CAF50;
-            color: white;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            font-size: 24px;
-        }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+      ul li {
+        background: #fff;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        ul li {
-            background: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 15px;
-            position: relative;
-            transition: background 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+      ul li a {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+      }
 
-        ul li:last-child {
-            border-bottom: none;
-        }
+      ul li .delete-btn,
+      ul li .edit-btn {
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: 10px; /* Space between buttons and text */
+      }
 
-        ul li:hover {
-            background: #f9f9f9;
-        }
+      ul li .delete-btn {
+        color: #e74c3c;
+      }
 
-        ul li span {
-            flex-grow: 1;
-            margin-right: 50px;
-        }
+      ul li .edit-btn {
+        color: #2980b9;
+      }
 
-        .btn {
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
+      form {
+        background: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      }
 
-        .delete-btn {
-            color: #e74c3c;
-        }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-        .edit-btn {
-            color: #f39c12;
-            margin-right: 10px;
-        }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
 
-        .delete-btn:hover {
-            color: #c0392b;
-        }
+      input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 3px;
+      }
 
-        .edit-btn:hover {
-            color: #e67e22;
-        }
-
-        form {
-            background: #fff;
-            padding: 20px;
-            border-top: 1px solid #ddd;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
+      input[type="submit"]:hover {
+        background-color: #2980b9;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Todo List - Tocs Project</h1>
-        <ul>
-            <% todolist.forEach(function(todo, index) { %>
-            <li>
-                <span><%- todo %></span>
-                <button class="btn edit-btn" onclick="location.href='/todo/<%= index %>'">✎</button>
-                <button class="btn delete-btn" onclick="location.href='/todo/delete/<%= index %>'">✘</button>
-            </li>
-            <% }); %>
-        </ul>
+  </head>
 
-        <form action="/todo/add/" method="post">
-            <label for="newtodo">What should I do?</label>
-            <input type="text" name="newtodo" id="newtodo" autofocus />
-            <input type="submit" value="Add" />
-        </form>
-    </div>
-</body>
+  <body>
+    <h1>Stunning Todo List</h1>
+    <ul>
+      <% todolist.forEach(function(todo, index) { %>
+      <li>
+        <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
+        <a href="/todo/<%= index %>" class="edit-btn">✎</a>
+        <%- todo %>
+      </li>
+      <% }); %>
+    </ul>
+
+    <form action="/todo/add/" method="post">
+      <label for="newtodo">Add a new task:</label>
+      <input type="text" name="newtodo" id="newtodo" autofocus />
+      <input type="submit" value="Add" />
+    </form>
+  </body>
 </html>
