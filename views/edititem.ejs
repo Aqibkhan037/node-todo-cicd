@@ -1,28 +1,65 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Todo: <%- todo %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5; /* Light gray background */
+      margin: 20px;
+    }
 
-<html>
+    h1 {
+      background-color: #fff; /* White background for header */
+      padding: 15px 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
 
-    <head>
-        <title>Edit <%- todo %></title>
-        <style>
-            a {
-                text-decoration: none;
-                color: black;
-            }
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        </style>
-    </head>
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
 
-    <body>
-        <h1>Edit <%- todo %>:</h1>
-        <form action="/todo/edit/<%= todoIdx %>" method="post">
-            <p>
-                <label for="editTodo">Change to:</label>
-                <input type="hidden" name="_method" value="PUT">
-                <input type="text" name="editTodo" id="editTodo" autofocus placeholder="<%- todo %>" />
-                <input type="submit" value="Save" />
-            </p>
-        </form>
-    </body>
+    input[type="text"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      margin-bottom: 10px;
+    }
 
+    input[type="submit"] {
+      background-color: #2980b9;
+      color: white;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1abc9c;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Edit Todo: <%- todo %></h1>
+  <form action="/todo/edit/<%= todoIdx %>" method="post">
+    <p>
+      <label for="editTodo">Change to:</label>
+      <input type="hidden" name="_method" value="PUT">
+      <input type="text" name="editTodo" id="editTodo" autofocus placeholder="<%- todo %>" />
+      <input type="submit" value="Save" />
+    </p>
+  </form>
+</body>
 </html>
