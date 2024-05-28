@@ -1,116 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Stunning Todo List</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        color: #333;
-        margin: 0;
-        padding: 20px;
-      }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
 
-      h1 {
-        background-color: #3498db;
-        color: white;
-        margin: 0;
-        padding: 20px;
-        text-align: center;
-        border-radius: 5px;
-      }
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
 
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
 
-      ul li {
-        background: #fff;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 15px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            padding: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
 
-      ul li a {
-        color: #333;
-        text-decoration: none;
-        font-weight: bold;
-      }
+        li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
 
-      ul li .delete-btn,
-      ul li .edit-btn {
-        text-decoration: none;
-        cursor: pointer;
-        margin-left: 10px; /* Space between buttons and text */
-      }
+        .delete-btn {
+            color: red;
+        }
 
-      ul li .delete-btn {
-        color: #e74c3c;
-      }
+        .edit-btn {
+            color: #FFC107;
+        }
 
-      ul li .edit-btn {
-        color: #2980b9;
-      }
+        form {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-      form {
-        background: #fff;
-        padding: 20px;
-        margin-top: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-      }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
 
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
 
-      input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 3px;
-      }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
 
-      input[type="submit"] {
-        background-color: #3498db;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 3px;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #2980b9;
-      }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
-  </head>
-
-  <body>
-    <h1>Stunning Todo List</h1>
+</head>
+<body>
+    <h1>Todo List</h1>
     <ul>
-      <% todolist.forEach(function(todo, index) { %>
-      <li>
-        <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
-        <a href="/todo/<%= index %>" class="edit-btn">✎</a>
-        <%- todo %>
-      </li>
-      <% }); %>
+        <!-- Sample todo items (replace with dynamic data from your backend) -->
+        <li>
+            <a href="#" class="delete-btn">✘</a>
+            <a href="#" class="edit-btn">✎</a>
+            Task 1: Buy groceries
+        </li>
+        <li>
+            <a href="#" class="delete-btn">✘</a>
+            <a href="#" class="edit-btn">✎</a>
+            Task 2: Finish project report
+        </li>
+        <!-- Add more list items here -->
     </ul>
 
     <form action="/todo/add/" method="post">
-      <label for="newtodo">Add a new task:</label>
-      <input type="text" name="newtodo" id="newtodo" autofocus />
-      <input type="submit" value="Add" />
+        <label for="newtodo">What should I do?</label>
+        <input type="text" name="newtodo" id="newtodo" autofocus required>
+        <input type="submit" value="Add">
     </form>
-  </body>
+</body>
 </html>
