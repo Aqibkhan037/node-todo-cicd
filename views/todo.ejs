@@ -6,7 +6,7 @@
     <title>Todo List App</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
@@ -18,6 +18,8 @@
             text-align: center;
             padding: 20px;
             margin: 0;
+            font-size: 24px;
+            letter-spacing: 2px;
         }
 
         ul {
@@ -29,10 +31,12 @@
             background-color: #fff;
             border: 1px solid #ddd;
             margin-bottom: 10px;
-            padding: 10px;
+            padding: 15px;
             position: relative;
             display: flex;
             align-items: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         li a {
@@ -40,14 +44,17 @@
             text-decoration: none;
             font-weight: bold;
             margin-right: 10px;
+            font-size: 18px;
         }
 
         .delete-btn {
-            color: red;
+            color: #e74c3c;
+            font-size: 20px;
         }
 
         .edit-btn {
-            color: #FFC107;
+            color: #f39c12;
+            font-size: 20px;
         }
 
         form {
@@ -61,6 +68,7 @@
         label {
             display: block;
             margin-bottom: 10px;
+            font-size: 16px;
         }
 
         input[type="text"] {
@@ -69,6 +77,7 @@
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 3px;
+            font-size: 16px;
         }
 
         input[type="submit"] {
@@ -78,6 +87,8 @@
             padding: 10px 20px;
             cursor: pointer;
             border-radius: 3px;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
         }
 
         input[type="submit"]:hover {
@@ -86,18 +97,18 @@
     </style>
 </head>
 <body>
-    <h1>Todo List</h1>
+    <h1>My Awesome Todo List</h1>
     <ul>
         <!-- Sample todo items (replace with dynamic data from your backend) -->
         <li>
             <a href="#" class="delete-btn">✘</a>
             <a href="#" class="edit-btn">✎</a>
-            Task 1: Buy groceries
+            <span>Buy groceries</span>
         </li>
         <li>
             <a href="#" class="delete-btn">✘</a>
             <a href="#" class="edit-btn">✎</a>
-            Task 2: Finish project report
+            <span>Finish project report</span>
         </li>
         <!-- Add more list items here -->
     </ul>
